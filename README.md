@@ -445,4 +445,3 @@ Notas
 [^48]: https://jdkcomparison.com
 
 [^49]: https://dev.to/viksingh/a-guide-to-java-migration-and-modernization-46af
-
