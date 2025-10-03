@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 0,
   "links": [],
   "panels": [
     {
@@ -414,7 +414,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(http_server_requests_seconds_count{job=\"calc17\", uri!~\"/actuator.*\"}[$__range])) by (job)",
+          "expr": "sum(rate(http_server_requests_seconds_count{job=\"calc17\", uri!~\"/actuator.*\"}[1m])) by (job)",
           "legendFormat": "Calc17",
           "range": true,
           "refId": "A"
@@ -425,7 +425,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(http_server_requests_seconds_count{job=\"calc21\", uri!~\"/actuator.*\"}[$__range])) by (job)",
+          "expr": "sum(rate(http_server_requests_seconds_count{job=\"calc21\", uri!~\"/actuator.*\"}[1m])) by (job)",
           "legendFormat": "Calc21",
           "range": true,
           "refId": "B"
@@ -436,7 +436,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(http_server_requests_seconds_count{job=\"calc25\", uri!~\"/actuator.*\"}[$__range])) by (job)",
+          "expr": "sum(rate(http_server_requests_seconds_count{job=\"calc25\", uri!~\"/actuator.*\"}[1m])) by (job)",
           "legendFormat": "Calc25",
           "range": true,
           "refId": "C"
@@ -507,7 +507,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "(\n  sum(rate(http_server_requests_seconds_sum{job=~\"calc17\", uri!~\"/actuator.*\"}[$__range]))\n  /\n  sum(rate(http_server_requests_seconds_count{job=~\"calc17\", uri!~\"/actuator.*\"}[$__range]))\n)",
+          "expr": "(\n  sum(rate(http_server_requests_seconds_sum{job=~\"calc17\", uri!~\"/actuator.*\"}[1m]))\n  /\n  sum(rate(http_server_requests_seconds_count{job=~\"calc17\", uri!~\"/actuator.*\"}[1m]))\n)",
           "legendFormat": "Calc17",
           "range": true,
           "refId": "A"
@@ -518,7 +518,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "(\n  sum(rate(http_server_requests_seconds_sum{job=~\"calc21\", uri!~\"/actuator.*\"}[$__range]))\n  /\n  sum(rate(http_server_requests_seconds_count{job=~\"calc21\", uri!~\"/actuator.*\"}[$__range]))\n)\n",
+          "expr": "(\n  sum(rate(http_server_requests_seconds_sum{job=~\"calc21\", uri!~\"/actuator.*\"}[1m]))\n  /\n  sum(rate(http_server_requests_seconds_count{job=~\"calc21\", uri!~\"/actuator.*\"}[1m]))\n)\n",
           "legendFormat": "Calc21",
           "range": true,
           "refId": "B"
@@ -529,7 +529,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "(\n  sum(rate(http_server_requests_seconds_sum{job=~\"calc25\", uri!~\"/actuator.*\"}[$__range]))\n  /\n  sum(rate(http_server_requests_seconds_count{job=~\"calc25\", uri!~\"/actuator.*\"}[$__range]))\n)\n",
+          "expr": "(\n  sum(rate(http_server_requests_seconds_sum{job=~\"calc25\", uri!~\"/actuator.*\"}[1m]))\n  /\n  sum(rate(http_server_requests_seconds_count{job=~\"calc25\", uri!~\"/actuator.*\"}[1m]))\n)\n",
           "legendFormat": "Calc25",
           "range": true,
           "refId": "C"
@@ -600,7 +600,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "max_over_time(process_files_open_files{job=\"calc17\"}[$__range])",
+          "expr": "max_over_time(process_files_open_files{job=\"calc17\"}[1m])",
           "legendFormat": "Calc17",
           "range": true,
           "refId": "Throughput"
@@ -611,7 +611,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "max_over_time(process_files_open_files{job=\"calc21\"}[$__range])",
+          "expr": "max_over_time(process_files_open_files{job=\"calc21\"}[1m])",
           "legendFormat": "Calc21",
           "range": true,
           "refId": "A"
@@ -622,7 +622,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "max_over_time(process_files_open_files{job=\"calc25\"}[$__range])",
+          "expr": "max_over_time(process_files_open_files{job=\"calc25\"}[1m])",
           "legendFormat": "Calc25",
           "range": true,
           "refId": "B"
@@ -1625,13 +1625,13 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_memory_used_bytes{id=~\"Tenured Gen\",job=~\"calc17|calc21|calc25\"}",
+          "expr": "jvm_memory_used_bytes{id=~\"G1 Old Gen\",job=~\"calc17|calc21|calc25\"}",
           "legendFormat": "Used - {{job}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Tenured Gen",
+      "title": "Old Gen",
       "type": "timeseries"
     },
     {
@@ -2160,7 +2160,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jvm_memory_used_bytes{area=\"heap\", id=\"Eden Space\", job=~\"calc17\"}[$__range])",
+          "expr": "max_over_time(jvm_memory_used_bytes{area=\"heap\", id=~\"G1 Eden Space\", job=~\"calc17\"}[1m])",
           "legendFormat": "Used - calc17 ",
           "range": true,
           "refId": "C"
@@ -2171,7 +2171,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jvm_memory_used_bytes{area=\"heap\", id=\"Eden Space\", job=~\"calc21\"}[$__range])",
+          "expr": "max_over_time(jvm_memory_used_bytes{area=\"heap\", id=~\"G1 Eden Space\", job=~\"calc21\"}[1m])",
           "legendFormat": "Used - calc21",
           "range": true,
           "refId": "A"
@@ -2182,7 +2182,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jvm_memory_used_bytes{area=\"heap\", id=\"Eden Space\", job=~\"calc25\"}[$__range])",
+          "expr": "max_over_time(jvm_memory_used_bytes{area=\"heap\", id=~\"G1 Eden Space\", job=~\"calc25\"}[1m])",
           "legendFormat": "Used - calc25",
           "range": true,
           "refId": "B"
@@ -2454,8 +2454,10 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(rate(jvm_gc_pause_seconds_count{job=\"calc17\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum(rate(jvm_gc_pause_seconds_count{job=\"calc17\"}[1m]))",
           "legendFormat": "Calc17",
+          "range": true,
           "refId": "A"
         },
         {
@@ -2463,8 +2465,10 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(rate(jvm_gc_pause_seconds_count{job=\"calc21\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum(rate(jvm_gc_pause_seconds_count{job=\"calc21\"}[1m]))",
           "legendFormat": "Calc21",
+          "range": true,
           "refId": "B"
         },
         {
@@ -2472,8 +2476,10 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(rate(jvm_gc_pause_seconds_count{job=\"calc25\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum(rate(jvm_gc_pause_seconds_count{job=\"calc25\"}[1m]))",
           "legendFormat": "Calc25",
+          "range": true,
           "refId": "C"
         }
       ],
@@ -2602,8 +2608,10 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(increase(jvm_gc_pause_seconds_sum{job=\"calc17\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum(increase(jvm_gc_pause_seconds_sum{job=\"calc17\"}[1m]))",
           "legendFormat": "Calc17",
+          "range": true,
           "refId": "A"
         },
         {
@@ -2611,8 +2619,10 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(increase(jvm_gc_pause_seconds_sum{job=\"calc21\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum(increase(jvm_gc_pause_seconds_sum{job=\"calc21\"}[1m]))",
           "legendFormat": "Calc21",
+          "range": true,
           "refId": "B"
         },
         {
@@ -2620,8 +2630,10 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(increase(jvm_gc_pause_seconds_sum{job=\"calc25\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum(increase(jvm_gc_pause_seconds_sum{job=\"calc25\"}[1m]))",
           "legendFormat": "Calc25",
+          "range": true,
           "refId": "C"
         }
       ],
@@ -3573,7 +3585,7 @@
         "x": 8,
         "y": 93
       },
-      "id": 75,
+      "id": 74,
       "options": {
         "legend": {
           "calcs": [],
@@ -3594,12 +3606,12 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "jvm_threads_states_threads{job=\"calc25\"}",
+          "expr": "jvm_threads_states_threads{job=\"calc21\"}",
           "legendFormat": "{{state}} - {{job}}",
           "refId": "A"
         }
       ],
-      "title": "Thread State Calc25",
+      "title": "Thread State Calc21",
       "type": "timeseries"
     },
     {
@@ -3792,7 +3804,7 @@
         "x": 16,
         "y": 93
       },
-      "id": 74,
+      "id": 75,
       "options": {
         "legend": {
           "calcs": [],
@@ -3813,12 +3825,12 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "jvm_threads_states_threads{job=\"calc21\"}",
+          "expr": "jvm_threads_states_threads{job=\"calc25\"}",
           "legendFormat": "{{state}} - {{job}}",
           "refId": "A"
         }
       ],
-      "title": "Thread State Calc21",
+      "title": "Thread State Calc25",
       "type": "timeseries"
     }
   ],
@@ -3830,12 +3842,12 @@
     "list": []
   },
   "time": {
-    "from": "now-1m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Java Machine Comparation",
   "uid": "z8gRJk0XLgMB3uodc",
-  "version": 5
+  "version": 2
 }

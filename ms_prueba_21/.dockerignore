@@ -1,0 +1,40 @@
+# Archivos de desarrollo
+.git
+.gitignore
+.gradle
+build/
+!build/libs/
+target/
+.idea/
+.vscode/
+*.iml
+*.log
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Documentación
+README.md
+docs/
+*.md
+!README.md
+
+# Archivos de configuración local
+.env
+.env.local
+application-local.yml
+application-dev.yml
+
+# Tests y reportes
+src/test/
+reports/
+coverage/
+
+# Node modules si usas frontend
+node_modules/
+npm-debug.log*
+
+# Archivos temporales
+tmp/
+.tmp/
