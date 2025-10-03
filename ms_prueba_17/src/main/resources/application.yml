@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: prueba
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    prometheus:
+      access: read_only
+server:
+  port: ${PORT:8080}
+

@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "calc17"
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ["calc17:8081"]
+
+  - job_name: "calc21"
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ["calc21:8082"]
+
+  - job_name: "calc25"
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ["calc25:8083"]
+
